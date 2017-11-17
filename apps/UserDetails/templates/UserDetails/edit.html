@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/{{user.id}}/update" method="post">
+        {% csrf_token %}
+        First Name: <input type="text" name="first_name" value = {{user.first_name}} placeholder="user.first_name" >
+        Last Name: <input type="text" name="last_name" value= {{user.last_name}} placeholder="Last name">
+        Email: <input type="text" name="email" value = {{user.email}} placeholder="Email@website.com">
+        <input type="submit" value="Update">
+    </form>
+    <a href='/{{user.id}}'/>Show</a> | <a href='/'>Go Back</a>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
